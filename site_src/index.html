@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>議会答弁トラッカー｜北海道議会編</title>
+<meta name="description" content="北海道議会で道が「検討してまいります」と答えた件が、その後の議会でどうなったかを、会議録の原文とあわせて並べています。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="議会答弁トラッカー｜北海道議会編">
+<meta property="og:description" content="北海道議会で道が「検討してまいります」と答えた件が、その後の議会でどうなったかを、会議録の原文とあわせて並べています。">
+<meta property="og:url" content="https://subara3.sakura.ne.jp/">
+<meta property="og:image" content="https://subara3.sakura.ne.jp/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff;--fg:#1f2328;--sub:#59636e;--mute:#8b949e;--line:#d8dee4;--soft:#f6f8fa;--acc:#0b5cad;
+  --done:#1a7f37;--cont:#0b5cad;--work:#9a6700;--drop:#b42318;--none:#afb8c1;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Yu Gothic UI","Meiryo",sans-serif;font-size:15px;line-height:1.75;font-feature-settings:"palt"}
+a{color:var(--acc)}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line);background:var(--bg)}
+header .wrap{padding-top:22px;padding-bottom:18px}
+.brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.brand h1{margin:0;font-size:22px;letter-spacing:.02em}
+.brand .sub{font-size:14px;color:var(--sub)}
+.lead{margin:8px 0 0;color:var(--sub);font-size:14px;max-width:46em}
+.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+.art{flex:none;width:220px;height:auto}
+#seats .s-実施・決定{fill:var(--done)}#seats .s-検討継続{fill:var(--cont)}#seats .s-取組中{fill:var(--work)}#seats .s-見送り{fill:var(--drop)}#seats .s-言及なし{fill:var(--none)}
+.notice{margin:14px 0 0;padding:10px 14px;border:1px solid #d4a72c;border-left-width:4px;border-radius:6px;background:#fff8c5;font-size:13.5px;color:var(--fg)}
+.notice b{margin-right:4px}
+main .wrap{padding-top:18px;padding-bottom:20px}
+.summary{border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin-bottom:16px}
+.summary h2{font-size:13px;color:var(--sub);font-weight:normal;margin:0 0 8px}
+.bar{display:flex;height:14px;border-radius:3px;overflow:hidden;background:var(--soft)}
+.bar span{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 8px;margin-top:10px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:6px;padding:4px 10px;background:var(--bg);cursor:pointer;font:inherit;font-size:13px;color:var(--fg)}
+.chip b{font-variant-numeric:tabular-nums}
+.chip[aria-pressed=true]{border-color:var(--fg);box-shadow:inset 0 0 0 1px var(--fg)}
+.dot{width:10px;height:10px;border-radius:2px;flex:none}
+.s-実施・決定{background:var(--done)}.s-検討継続{background:var(--cont)}.s-取組中{background:var(--work)}.s-見送り{background:var(--drop)}.s-言及なし{background:var(--none)}
+.c-実施・決定{color:var(--done)}.c-検討継続{color:var(--cont)}.c-取組中{color:var(--work)}.c-見送り{color:var(--drop)}.c-言及なし{color:var(--mute)}
+.defs{margin:10px 0 0;padding:0;list-style:none;font-size:12.5px;color:var(--sub);display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px 16px}
+.tools{display:grid;grid-template-columns:1fr auto auto;gap:8px;margin-bottom:8px}
+.tools input,.tools select{font:inherit;font-size:14px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);min-width:0}
+.count{color:var(--sub);font-size:13px;margin:6px 0 10px}
+.item{border:1px solid var(--line);border-radius:8px;margin-bottom:10px;background:var(--bg)}
+.item.open{border-color:#afb8c1}
+.item>button{all:unset;display:block;width:100%;padding:12px 16px;cursor:pointer;box-sizing:border-box}
+.item>button:hover{background:var(--soft)}
+.item>button:focus-visible{outline:2px solid var(--acc);outline-offset:-2px;border-radius:8px}
+.row1{display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
+.subj{font-weight:600;font-size:15.5px;line-height:1.5}
+.meta{color:var(--sub);font-size:12.5px;margin-top:3px}
+.right{flex:none;text-align:right}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
+.tags span{font-size:11.5px;color:var(--sub);background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:0 7px;line-height:1.8}
+.badge{display:inline-block;font-size:12px;border-radius:999px;padding:1px 10px;border:1px solid currentColor;white-space:nowrap;line-height:1.7}
+.when{display:block;font-size:11.5px;color:var(--sub);margin-top:3px}
+.track{display:flex;gap:3px;margin-top:8px;align-items:center}
+.track i{display:block;width:22px;height:8px;border-radius:2px}
+.track small{font-size:11px;color:var(--mute);margin-left:6px}
+.detail{display:none;border-top:1px solid var(--line);padding:14px 16px 16px}
+.item.open .detail{display:block}
+.promise{background:var(--soft);border-radius:6px;padding:10px 12px;font-size:14px}
+.promise .who{font-size:12.5px;color:var(--sub);margin-bottom:4px}
+.rel details{margin-top:4px;font-size:13px}.rel summary{cursor:pointer;color:var(--sub)}
+.relrow{margin:6px 0 0;padding:6px 10px;background:var(--soft);border-radius:6px;font-size:13px;color:var(--fg)}
+.relrow .role{font-size:11px;border:1px solid var(--line);border-radius:999px;padding:0 6px;color:var(--sub)}
+.subs{list-style:none;margin:8px 0 0;padding:0}
+.subs li{border-left:3px solid var(--line);padding:2px 0 8px 10px;margin-bottom:6px}
+.subs .h{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;margin-bottom:4px;font-size:14px}
+.subs .when{display:inline;margin:0}
+.more{margin-top:8px;font-size:13.5px}.more summary{cursor:pointer;color:var(--acc)}.more .promise{margin-top:8px}
+.tl{list-style:none;margin:16px 0 0;padding:0 0 0 16px;border-left:2px solid var(--line)}
+.tl li{position:relative;margin:0 0 14px;padding-left:12px}
+.tl li::before{content:"";position:absolute;left:-23px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid currentColor}
+.tl .h{font-size:13.5px;color:var(--fg)}
+.tl .h b{margin-right:8px}
+.tl .sum{font-size:13.5px;color:var(--fg)}
+.tl .q{font-size:13.5px;margin-top:4px;padding:2px 0 2px 10px;border-left:3px solid var(--line);color:var(--fg)}
+.tl .src{font-size:12.5px;color:var(--sub);margin-top:2px}
+.tl li.none{color:var(--none)}
+.tl li.none .h{color:var(--mute)}
+.tl li.none .h b{font-weight:normal}
+.again{font-size:12px;color:var(--sub);margin-left:6px}
+.share{font-size:12.5px;margin-top:6px}
+.about{border-top:1px solid var(--line);margin-top:28px;padding-top:18px;font-size:13.5px;color:var(--fg)}
+.about h2{font-size:16px;margin:0 0 8px}
+.about h3{font-size:14px;margin:16px 0 4px}
+.about p,.about li{color:var(--sub)}
+.about table{border-collapse:collapse;font-size:13px;margin-top:6px}
+.about th,.about td{border:1px solid var(--line);padding:4px 10px;text-align:left}
+.about td.n{text-align:right;font-variant-numeric:tabular-nums}
+footer{border-top:1px solid var(--line);margin-top:24px}
+footer .wrap{padding-top:14px;padding-bottom:30px;color:var(--sub);font-size:12.5px}
+@media (max-width:640px){
+  .wrap{padding:0 14px}
+  .tools{grid-template-columns:1fr 1fr}
+  .tools input{grid-column:1/-1}
+  .row1{flex-direction:column;gap:6px}
+  .right{text-align:left}
+  .track i{width:16px}
+  .art{display:none}
+}
+@media print{.tools,.summary .legend,.share{display:none}.detail{display:block!important}}
+
+/* 見た目：上の帯・背景・面 */
+:root{--page:#f2f4f6;--bar:#1f2a37}
+body{background:var(--page)}
+.topbar{background:var(--bar);color:#fff}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px}
+.tb-brand{color:#fff;text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.04em;white-space:nowrap}
+.tb-brand span{font-weight:normal;color:#aab4c0;margin-left:8px;font-size:12.5px}
+.topbar nav{display:flex;gap:2px;flex-wrap:wrap}
+.topbar nav a{color:#d0d7de;text-decoration:none;font-size:13px;padding:6px 10px;border-radius:4px}
+.topbar nav a:hover{background:rgba(255,255,255,.08);color:#fff}
+.topbar nav a[aria-current=page]{color:#fff;box-shadow:inset 0 -2px 0 #8fb8e6}
+header{background:#fff;border-bottom:1px solid var(--line)}
+.summary{background:#fff}
+.about{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px 20px}
+.hit{background:#fff}
+footer{background:#e8ecf0;border-top:1px solid var(--line)}
+@media (max-width:640px){.tb-brand span{display:none}.topbar nav a{padding:6px 7px;font-size:12.5px}}
+
+/* ===== 見た目 v3：幾何学（方眼・半円の議場・直角）。色は紺と状態の5色だけ ===== */
+:root{--ink:#0f1722;--ink2:#1b2634;--page:#eef0f2;--pale:#9fc3ea;--mono:"DM Mono",ui-monospace,Consolas,monospace;
+  --grid:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px)}
+body{font-family:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif;background-color:var(--page);
+  background-image:radial-gradient(rgba(15,23,34,.075) 1px,transparent 1px);background-size:16px 16px}
+.topbar{background:var(--ink);border-bottom:1px solid rgba(255,255,255,.12)}
+.tb-brand{letter-spacing:.1em}
+.tb-brand::before{content:"";display:inline-block;width:9px;height:9px;background:var(--pale);margin-right:10px}
+.topbar nav a{border-radius:0;letter-spacing:.04em}
+.topbar nav a[aria-current=page]{box-shadow:inset 0 -2px 0 var(--pale)}
+header{background-color:var(--ink);background-image:var(--grid);background-size:32px 32px;color:#fff;border-bottom:0;position:relative}
+header::after{content:"";display:block;height:6px;background:var(--band,var(--pale))}
+header .wrap{padding-top:40px;padding-bottom:28px}
+.hero{align-items:center;gap:32px}
+.brand{display:block}
+.brand h1{font-size:38px;font-weight:700;letter-spacing:.08em;line-height:1.25}
+.brand .sub{display:block;margin-top:6px;font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;color:var(--pale)}
+.lead{color:#c9d3de;font-size:14.5px;margin-top:14px;max-width:34em}
+header a{color:#d6e8fb}
+.art{width:340px;max-width:42vw}
+.art .arc{fill:none;stroke:rgba(255,255,255,.14);stroke-width:1}
+.art .base{stroke:rgba(255,255,255,.35)}
+.art .desk{fill:none;stroke:var(--pale);stroke-width:1.2}
+#seats rect{opacity:0;animation:seat .3s ease-out forwards}
+@keyframes seat{from{opacity:0}to{opacity:1}}
+.stats{display:flex;gap:0;margin:22px 0 0;padding:0;border-top:1px solid rgba(255,255,255,.22)}
+.stats div{padding:10px 22px 0 0;margin-right:22px;border-right:1px solid rgba(255,255,255,.14)}
+.stats div:last-child{border-right:0}
+.stats dt{font-size:11.5px;color:#9aa7b5;letter-spacing:.08em}
+.stats dd{margin:0;font-family:var(--mono);font-size:26px;font-weight:500;letter-spacing:.02em;line-height:1.3}
+.stats dd small{font-family:"Zen Kaku Gothic New",sans-serif;font-size:12px;color:#9aa7b5;margin-left:3px}
+.notice{background:transparent;border:1px solid rgba(255,255,255,.22);border-left:4px solid #d4a72c;border-radius:0;color:#dfe6ee;margin-top:24px}
+.summary,.about,.item,.hit,.chip,.badge,.tags span,.promise,.relrow,.tools input,.tools select,input,select,button{border-radius:2px}
+.summary{border-color:var(--ink);box-shadow:4px 4px 0 rgba(15,23,34,.08)}
+.summary h2{font-family:var(--mono);letter-spacing:.06em;color:var(--fg)}
+.bar{height:10px;border-radius:0;gap:2px;background:transparent}
+.dot{border-radius:0}
+.chip b{font-family:var(--mono);font-weight:500}
+.chip[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:none}
+.tools input,.tools select{border-color:#b9c1ca;background:#fff}
+.tools input:focus,.tools select:focus,form input:focus{outline:2px solid var(--ink);outline-offset:0;border-color:var(--ink)}
+.count{font-family:var(--mono);font-size:12px;letter-spacing:.06em}
+.item{border-left:4px solid var(--none);transition:transform .18s ease-out,box-shadow .18s ease-out,border-color .18s ease-out}
+.item.st-実施・決定{border-left-color:var(--done)}.item.st-検討継続{border-left-color:var(--cont)}.item.st-取組中{border-left-color:var(--work)}.item.st-見送り{border-left-color:var(--drop)}
+.item:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 rgba(15,23,34,.10)}
+.item.open{transform:none;box-shadow:4px 4px 0 rgba(15,23,34,.10);border-top-color:var(--ink);border-right-color:var(--ink);border-bottom-color:var(--ink)}
+.item>button:hover{background:transparent}
+.item>button:focus-visible{border-radius:0}
+.subj{font-size:16px;font-weight:700;letter-spacing:.01em}
+.no{font-family:var(--mono);font-size:11px;color:var(--mute);letter-spacing:.08em;display:block;margin-bottom:4px}
+.badge{border-radius:0;font-weight:500;padding:1px 9px}
+.when{font-family:var(--mono);font-size:11px}
+.track{gap:2px}.track i{border-radius:0;width:20px;height:8px}
+.tags span{background:transparent;border-color:#cfd6dd}
+.tl{border-left:1px solid #9aa4af}
+.tl li::before{border-radius:0;left:-22px;top:9px;width:9px;height:9px;transform:rotate(45deg)}
+.about{box-shadow:4px 4px 0 rgba(15,23,34,.08);border-color:var(--ink)}
+.about h2{font-size:18px;letter-spacing:.06em;display:flex;align-items:center;gap:10px}
+.about h2::before{content:"";width:10px;height:10px;background:var(--ink)}
+.about h3{border-left:3px solid var(--ink);padding-left:8px}
+.about td.n{font-family:var(--mono)}
+.about th{background:var(--soft)}
+footer{background-color:var(--ink);background-image:var(--grid);background-size:32px 32px;border-top:0;margin-top:40px}
+footer .wrap{color:#aab4c0;padding-top:22px}
+footer a{color:#d6e8fb}
+#uptime{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-top:6px}
+#uptime:empty{display:none}
+#uptime .cells{display:flex;flex-wrap:wrap;gap:2px}
+#uptime i{display:inline-block;width:9px;height:9px;border:1px solid rgba(255,255,255,.28);box-sizing:border-box}
+#uptime i.ok{background:var(--pale);border-color:var(--pale)}
+#uptime i.new{background:#3fb950;border-color:#3fb950}
+#uptime .key{font-size:11.5px;color:#8b97a4}#uptime .key i{margin:0 4px 0 8px;vertical-align:-1px}
+.hit{border-left:4px solid var(--ink)}
+.role{border-radius:0}
+mark{background:#ffe27a}
+form button{background:var(--ink);border-color:var(--ink);letter-spacing:.1em}
+#list.intro .item:nth-child(-n+10){animation:rise .36s ease-out both}
+#list.intro .item:nth-child(2){animation-delay:40ms}#list.intro .item:nth-child(3){animation-delay:80ms}#list.intro .item:nth-child(4){animation-delay:120ms}#list.intro .item:nth-child(5){animation-delay:160ms}#list.intro .item:nth-child(n+6){animation-delay:200ms}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (max-width:640px){
+  header .wrap{padding-top:26px;padding-bottom:20px}
+  .hero{flex-direction:column;align-items:flex-start;gap:16px}
+  .brand h1{font-size:27px}
+  .art{display:block;width:100%;max-width:320px;margin:4px auto 0}
+  .tb-brand{font-size:0;letter-spacing:0}.tb-brand::before{margin-right:0}
+  .topbar nav{flex-wrap:nowrap}.topbar nav a{white-space:nowrap}
+  .stats div{padding-right:14px;margin-right:14px}.stats dd{font-size:21px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}#seats rect{opacity:1}}
+@media print{body{background:#fff}header,footer,.topbar{background:#fff!important;color:#000}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><a class="tb-brand" href="./">議会答弁トラッカー<span>北海道議会編</span></a><nav aria-label="サイト内"><a href="./" aria-current="page">約束の一覧</a><a href="search.html">全文検索</a><a href="./#about">作り方と精度</a></nav></div></div>
+<header>
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <div class="brand"><h1>議会答弁トラッカー</h1><span class="sub">これまでとこれから ／ 北海道議会編</span></div>
+        <p class="lead">北海道議会で、道が「検討してまいります」と答えた件が、その後の議会でどうなったかを、会議録の原文とあわせて並べています。</p>
+        <dl class="stats" id="stats"></dl>
+      </div>
+      <svg class="art" viewBox="0 0 240 124" aria-hidden="true" focusable="false">
+        <path class="arc" d="M8 112a112 112 0 0 1 224 0M92 112a28 28 0 0 1 56 0"/>
+        <path class="arc base" d="M4 112h232"/>
+        <g id="seats"></g>
+        <rect class="desk" x="108" y="98" width="24" height="10"/>
+      </svg>
+    </div>
+    <p class="notice"><b>AIで読み取った情報です。</b>この一覧は、会議録をAIで解析した結果をもとにしているため、誤りを含むことがあります。確実な内容は、各件のリンク先の会議録（原文）をご覧ください。</p>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <section class="summary" aria-label="全体の内訳">
+      <h2 id="sumhead"></h2>
+      <div class="bar" id="bar" role="img"></div>
+      <div class="legend" id="legend"></div>
+      <ul class="defs" id="defs"></ul>
+    </section>
+    <div class="tools">
+      <input id="q" type="search" placeholder="件名・答弁者・本文で絞り込み（例：宿泊税、ヒグマ、医師）" aria-label="絞り込み">
+      <select id="sess" aria-label="約束した会議"><option value="">約束した会議：すべて</option></select>
+      <select id="sort" aria-label="並べ替え">
+        <option value="old">約束が古い順</option>
+        <option value="new">約束が新しい順</option>
+        <option value="prog">進んだ順</option>
+        <option value="talk">取り上げた会議が多い順</option>
+        <option value="ask">質問した議員が多い順</option>
+      </select>
+    </div>
+    <div class="count" id="count" aria-live="polite"></div>
+    <div id="list"></div>
+
+    <section class="about" id="about">
+      <h2>作り方と精度</h2>
+      <h3>作り方</h3>
+      <ol>
+        <li>北海道議会ウェブサイトの会議録（速報版PDF）から、知事・部長などの答弁を取り出します。</li>
+        <li>答弁の文のうち「これから検討する」「見直す」「示す」と述べた文を、AIで選びます。似た約束は1件にまとめます。</li>
+        <li>その後の会議の答弁から、同じ件に触れた部分を検索し、AIが会議ごとの状態を判定します。根拠の引用は、原文と一致するかをプログラムで確かめています。</li>
+        <li>件名は、約束の文と直前の質問をもとにAIが付けています。同じ件の約束は、AIの判定で1件にまとめています。まとめた約束ごとの状態は、各件を開くと見られます。</li>
+      </ol>
+      <p>各件の「取り上げた会議」「質問した議員」「知事答弁あり」は、話題の大きさを見る手がかりとして、会議録から数えたものです（AIは使っていません）。「取り上げた会議」は、約束した会議と、その後に同じ件の答弁が見つかった会議の数です。「質問した議員」は、約束やその後の答弁の直前に質問した議員の人数です。「知事答弁あり」は、約束かその後の答弁の中に、知事の答弁があることを示します。</p>
+      <p>使っているAI：さくらのAI Engine（判定 gemma-4-31B-it、検索 Qwen3-Embedding-4B）。</p>
+      <h3>精度（調整に使っていない20件・80か所で測定）</h3>
+      <p>正解は、判定に使っていない別のAI（Claude）が会議録の原文を読んで付け、全80か所を原文と照らして見直したものです。</p>
+      <table>
+        <tr><th>項目</th><th>結果</th></tr>
+        <tr><td>会議ごとの状態が正解と一致した割合</td><td class="n">82%</td></tr>
+        <tr><td>「進展あり」と表示したもののうち、正しかった割合</td><td class="n">97%</td></tr>
+        <tr><td>実際に進展があったもののうち、拾えた割合</td><td class="n">74%</td></tr>
+      </table>
+      <p>誤りの多くは、実際には触れられている件を「言及なし」としてしまうものです。「言及なし」は、見つからなかったという意味で、触れられていないことを確かめたものではありません。</p>
+      <p>そのため「言及なし」の会議には、埋め込みと件名の語で検索して近かった発言（議員の質問を含め、最大2件）を並べています。AIの判定は通していないので、同じ件の発言とは限りません。</p>
+      <h3>対象</h3>
+      <p id="scope"></p>
+    </section>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <p>出典：北海道議会 会議録（速報版・PDF）、北海道議会ウェブサイト（CC BY）。各件の原文は、リンク先の会議録PDFでご覧いただけます。</p>
+    <p>参考：<a href="https://www.gikai.pref.hokkaido.lg.jp/kaigiroku/kaigiroku_sokuhou/" target="_blank" rel="noopener">北海道議会 会議録（速報）</a>（このサイトの元データ。本会議・予算特別委員会・決算特別委員会のPDF）｜<a href="http://pref-hokkaido.gijiroku.com/voices/index.asp" target="_blank" rel="noopener">北海道議会 会議録データベース</a>（正式版。常任委員会なども含み、過去の会議録も探せます。速報版より遅れて載ります）</p>
+    <p id="built"></p>
+    <p id="checked"></p>
+    <p id="uptime"></p>
+  </div>
+</footer>
+<script>
+const ORDER=['実施・決定','検討継続','取組中','見送り','言及なし'];
+const RANK={'実施・決定':4,'見送り':3,'検討継続':2,'取組中':1,'言及なし':0};
+const DESC={'実施・決定':'計画・制度・予算などが決まった、または案が示された','検討継続':'まだ検討中・調整中と答えている','取組中':'進めていると答えているが、何が決まったかは述べていない','見送り':'やらない・見送ると答えた','言及なし':'その後の会議で、同じ件の答弁が見つからなかった'};
+let DATA,filt='',ALLS=[];
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+fetch('data.json').then(r=>r.json()).then(d=>{DATA=d;init()});
+fetch('status.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(s=>{
+  if(!s||!s.checked)return;
+  $('#checked').textContent=`最終確認：${s.checked}（さくらのVPS・石狩第1で、毎日1回、新しい会議録が出ていないかを確認しています）`;
+  if(!s.log||!s.log.length)return;
+  // 動き続けている記録：最初の日から今日まで1日1マス。確認した日は塗り、新しい会議録が出た日は緑
+  const by={};s.log.forEach(x=>by[x.d]=x);
+  const p=n=>String(n).padStart(2,'0'),key=t=>`${t.getFullYear()}-${p(t.getMonth()+1)}-${p(t.getDate())}`;
+  const a=new Date(s.log[0].d+'T00:00:00'),z=new Date(s.log[s.log.length-1].d+'T00:00:00');let h='';
+  for(let t=new Date(a);t<=z;t.setDate(t.getDate()+1)){const x=by[key(t)],lab=`${t.getMonth()+1}月${t.getDate()}日`;
+    h+=`<i class="${x?(x.n?'new':'ok'):''}" title="${lab}：${x?(x.n?`新しい会議録${x.n}本、AI ${x.r}回`:'確認、新しい会議録なし'):'記録なし'}"></i>`}
+  $('#uptime').innerHTML=`<span>${esc(s.since)}から、確認した日は${s.days}日</span><span class="cells">${h}</span><span class="key"><i class="ok"></i>確認した日 <i class="new"></i>新しい会議録が出た日</span>`;
+}).catch(()=>{});
+const label=s=>DATA.meta.sessions[s]?.label||s;
+const ord=s=>DATA.meta.sessions[s]?.order??0;
+function init(){
+  ALLS=Object.keys(DATA.meta.sessions).sort((a,b)=>ord(a)-ord(b)||a.localeCompare(b));
+  const ss=[...new Set(DATA.items.map(i=>i.session))].sort((a,b)=>ord(a)-ord(b));
+  $('#sess').innerHTML+=ss.map(s=>`<option value="${s}">${esc(label(s))}</option>`).join('');
+  ['#q','#sess','#sort'].forEach(id=>$(id).addEventListener(id==='#q'?'input':'change',render));
+  $('#defs').innerHTML=ORDER.map(k=>`<li><span class="c-${k}">■</span> ${k}：${esc(DESC[k])}</li>`).join('');
+  $('#scope').textContent=`約束した会議：${ss.map(label).join('、')}。追跡した会議は、それぞれのあとの会議（${label(ALLS[ALLS.length-1])}まで）。約束 ${DATA.meta.promises}件を、似たものをまとめて ${DATA.meta.count}件にしています。`;
+  if(DATA.meta.built)$('#built').textContent=`更新：${DATA.meta.built}`;
+  seats();
+  $('#list').classList.add('intro');setTimeout(()=>$('#list').classList.remove('intro'),900);
+  render();
+  openHash();
+  window.addEventListener('hashchange',openHash);
+}
+function seats(){
+  // 議場の席を半円に並べ、全件の到達点の割合で色を付ける（飾り）
+  const rows=[[40,16],[52,21],[64,26],[76,31],[88,36],[100,41]],pos=[];
+  rows.forEach(([r,k])=>{for(let j=0;j<k;j++){const a=Math.PI*(j+.5)/k;pos.push([a,120-r*Math.cos(a),112-r*Math.sin(a)])}});
+  pos.sort((p,q)=>p[0]-q[0]);
+  const c={};DATA.items.forEach(i=>c[i.reached]=(c[i.reached]||0)+1);
+  const col=[];ORDER.forEach(k=>{for(let j=0;j<Math.round((c[k]||0)/DATA.items.length*pos.length);j++)col.push(k)});
+  // 席は小さな正方形。中心を向くように回し、左から順に出す
+  $('#seats').innerHTML=pos.map((p,j)=>`<rect x="${(p[1]-3).toFixed(1)}" y="${(p[2]-3).toFixed(1)}" width="6" height="6" transform="rotate(${(p[0]*180/Math.PI-90).toFixed(1)} ${p[1].toFixed(1)} ${p[2].toFixed(1)})" style="animation-delay:${j*3}ms" class="s-${col[j]||'言及なし'}"/>`).join('');
+  // ヘッダー下の帯：到達点の内訳と同じ割合
+  let acc=0;const C={'実施・決定':'--done','検討継続':'--cont','取組中':'--work','見送り':'--drop','言及なし':'--none'};
+  const stops=ORDER.filter(k=>c[k]).map(k=>{const a=acc;acc+=c[k]/DATA.items.length*100;return `var(${C[k]}) ${a.toFixed(2)}% ${acc.toFixed(2)}%`});
+  document.querySelector('header').style.setProperty('--band',`linear-gradient(90deg,${stops.join(',')})`);
+  const f=n=>n.toLocaleString('ja-JP');
+  $('#stats').innerHTML=`<div><dt>拾った約束</dt><dd>${f(DATA.meta.promises)}<small>件</small></dd></div><div><dt>同じ件をまとめて</dt><dd>${f(DATA.meta.count)}<small>件</small></dd></div><div><dt>読んだ会議</dt><dd>${ALLS.length}<small>回</small></dd></div>`;
+}
+// 「言及なし」の会議で、検索で近かった発言（rel.json.gz。件を開いたときに1回だけ読む）
+let REL=null;
+async function loadRel(){
+  if(REL)return REL;
+  REL=(async()=>{const buf=await (await fetch('rel.json.gz')).arrayBuffer(),b=new Uint8Array(buf);
+    const txt=(b[0]===0x1f&&b[1]===0x8b)?await new Response(new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip'))).text():new TextDecoder().decode(b);
+    return JSON.parse(txt)})().catch(()=>({}));
+  return REL;
+}
+const RROLE={a:'執行部',q:'議員'};
+async function showRel(it){
+  const box=it.querySelectorAll('.rel:not([data-done])');if(!box.length)return;
+  const R=(await loadRel())[it.dataset.id]||{};
+  box.forEach(el=>{el.dataset.done=1;const rows=R[el.dataset.s];if(!rows)return;
+    el.innerHTML=`<details><summary>この会議で検索して近かった発言（${rows.length}件）</summary>${rows.map(r=>`<div class="relrow"><span class="role">${RROLE[r[0]]||''}</span> ${esc(r[1])}　<a href="${esc(r[2])}" target="_blank" rel="noopener">会議録PDF</a><div>${esc(r[3])}…</div></div>`).join('')}</details>`});
+}
+function openHash(){
+  const id=decodeURIComponent(location.hash.slice(1)); if(!id||id==='about')return;
+  let el=document.getElementById('i-'+id);
+  if(!el){$('#q').value='';$('#sess').value='';filt='';render();el=document.getElementById('i-'+id)}
+  if(el){el.classList.add('open');el.querySelector('button').setAttribute('aria-expanded','true');el.scrollIntoView({block:'start'});showRel(el)}
+}
+function render(){
+  const q=$('#q').value.trim(),s=$('#sess').value,so=$('#sort').value;
+  let base=DATA.items.filter(i=>(!s||i.session===s)&&(!q||(i.subject+i.speaker+i.asker+i.promises.map(p=>p.sentence).join('')+i.timeline.map(t=>(t.q||'')+(t.sum||'')).join('')).includes(q)));
+  const c={};base.forEach(i=>c[i.reached]=(c[i.reached]||0)+1);
+  const n=base.length||1;
+  $('#sumhead').textContent=`到達点の内訳（${base.length}件）`;
+  $('#bar').innerHTML=ORDER.filter(k=>c[k]).map(k=>`<span class="s-${k}" style="width:${c[k]/n*100}%" title="${k} ${c[k]}件"></span>`).join('');
+  $('#bar').setAttribute('aria-label',ORDER.filter(k=>c[k]).map(k=>`${k} ${c[k]}件`).join('、'));
+  $('#legend').innerHTML=`<button class="chip" aria-pressed="${!filt}" data-f="">すべて <b>${base.length}</b></button>`+
+    ORDER.filter(k=>c[k]).map(k=>`<button class="chip" aria-pressed="${filt===k}" data-f="${k}"><span class="dot s-${k}"></span>${k} <b>${c[k]}</b></button>`).join('');
+  $('#legend').querySelectorAll('.chip').forEach(b=>b.onclick=()=>{filt=b.dataset.f;render()});
+  let items=base.filter(i=>!filt||i.reached===filt);
+  if(so==='new')items=[...items].sort((a,b)=>ord(b.session)-ord(a.session));
+  if(so==='talk')items=[...items].sort((a,b)=>b.nses-a.nses||b.nask-a.nask||ord(a.session)-ord(b.session));
+  if(so==='ask')items=[...items].sort((a,b)=>b.nask-a.nask||b.nses-a.nses||ord(a.session)-ord(b.session));
+  if(so==='prog')items=[...items].sort((a,b)=>RANK[b.reached]-RANK[a.reached]||ord(a.session)-ord(b.session));
+  $('#count').textContent=`${items.length}件を表示`;
+  $('#list').innerHTML=items.map(card).join('');
+  $('#list').querySelectorAll('.item>button').forEach(b=>b.onclick=()=>{
+    const it=b.parentElement,open=it.classList.toggle('open');b.setAttribute('aria-expanded',open);
+    if(open){history.replaceState(null,'','#'+encodeURIComponent(it.dataset.id));showRel(it)}
+  });
+}
+function sub(p){
+  const st=p.later?`<span class="badge c-${p.st}">${p.st}</span>${p.at?`<span class="when">${esc(label(p.at))}</span>`:''}`:'<span class="when">あとの会議はまだありません</span>';
+  return `<li><div class="h"><b>${esc(p.subject)}</b>${st}</div>${promise(p,'約束の答弁')}</li>`;
+}
+function promise(p,head){return `<div class="promise"><div class="who">${head}　${esc(label(p.session))}・${esc(p.src.date)}・${esc(p.speaker)}　<a href="${esc(p.src.url)}" target="_blank" rel="noopener">会議録PDF${p.src.page?` ${p.src.page}ページ`:''}</a></div>「${esc(p.sentence)}」</div>`}
+function card(i,n){
+  const at=i.reached_at?`<span class="when">${esc(label(i.reached_at))}</span>`:'';
+  const later=i.timeline;
+  const track=later.length?`<div class="track" aria-hidden="true">${later.map(t=>`<i class="s-${t.st}" title="${esc(label(t.s))}：${t.st}"></i>`).join('')}<small>その後の${later.length}回の会議</small></div>`:'';
+  const tl=later.map(t=>t.st==='言及なし'
+    ?`<li class="none"><div class="h"><b>${esc(label(t.s))}</b>言及なし</div><div class="rel" data-s="${esc(t.s)}"></div></li>`
+    :`<li class="c-${t.st}"><div class="h"><b>${esc(label(t.s))}</b><span class="badge c-${t.st}">${t.st}</span>${t.again?'<span class="again">この会議でも同じ件の答弁あり</span>':''}</div>
+       <div class="sum">${esc(t.sum)}</div>
+       <div class="q">「${esc(t.q)}」</div>
+       <div class="src">${esc(t.who)}　<a href="${esc(t.url)}" target="_blank" rel="noopener">会議録PDF${t.page?` ${t.page}ページ`:''}</a>（${esc(t.date)}）</div></li>`).join('');
+  return `<article class="item st-${i.reached}" id="i-${esc(i.id)}" data-id="${esc(i.id)}"><button aria-expanded="false">
+    <div class="row1"><div><span class="no">No.${String(n+1).padStart(3,'0')}</span><div class="subj">${esc(i.subject)}</div>
+      <div class="meta">${esc(label(i.session))}・${esc(i.speaker)}${i.asker?`（質問：${esc(i.asker)}）`:''}${i.promises.length>1?`　ほか${i.promises.length-1}回答弁`:''}</div>
+      <div class="tags"><span>取り上げた会議 ${i.nses}回</span><span>質問した議員 ${i.nask}人</span>${i.gov?'<span>知事答弁あり</span>':''}${i.promises.length>1?`<span>まとめた約束 ${i.promises.length}件（実施・決定 ${i.promises.filter(p=>p.st==='実施・決定').length}件）</span>`:''}</div>
+      ${track}</div>
+      <div class="right"><span class="badge c-${i.reached}">${i.reached}</span>${at}</div></div></button>
+    <div class="detail">
+      ${promise(i.promises[0],'約束の答弁')}
+      ${i.promises.length>1?`<details class="more"><summary>この件にまとめた約束${i.promises.length}件と、それぞれの状態を見る</summary><ul class="subs">${i.promises.map(sub).join('')}</ul></details>`:''}
+      ${tl?`<ul class="tl">${tl}</ul>`:'<p class="share">まだ、あとの会議がありません。</p>'}
+      <div class="share"><a href="#${encodeURIComponent(i.id)}">この件へのリンク</a></div>
+    </div></article>`;
+}
+</script>
+</body>
+</html>
